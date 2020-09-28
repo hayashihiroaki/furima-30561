@@ -17,56 +17,65 @@
 
 - has_many :items
 - has_many :comments
-- has_one :credit_card
+- has_many :orders
 
 ## items テーブル
 
-| Column          | Type       | Options                        |
-| --------------- | ---------- | ------------------------------ |
-| image           |            |                                |       
-| name            | string     | null: false                    |
-| explanation     | text       | null: false                    |
-| category        | string     | null: false                    |
-| status          | string     | null: false                    |
-| delivery_charge | string     | null: false                    |       
-| shipment_source | string     | null: false                    |
-| shipping_days   | string     | null: false                    |
-| price           | integer    | null: false                    |
-| user            | references | null: false, foreign_key: true |
-
+| Column      | Type       | Options                        |
+| ----------- | ---------- | ------------------------------ |   
+| name        | string     | null: false                    |
+| explanation | text       | null: false                    |
+| price       | integer    | null: false                    |
+| user        | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
 - has_many :comments
+- has_one :order
 
 ## comments テーブル
 
-| Column    | Type       | Options                        |
-| --------- | ---------- | ------------------------------ |
-| comment   | text       | null: false                    |
-| user      | references | null: false, foreign_key: true |
-| item      | references | null: false, foreign_key: true |
+| Column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
+| comment | text       | null: false                    |
+| user    | references | null: false, foreign_key: true |
+| item    | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
 - belongs_to :item
 
-## credit_cards テーブル
+## addresses テーブル
 
-| Column           | Type      | Options                       |
-| ---------------- | --------- | ----------------------------- |
-| number           | integer   | null: false                   |
-| explanation_date | integer   | null: false                   |
-| security_code    | integer   | null: false                   |
-| postal_code      | integer   | null: false                   |
-| city             | string    | null: false                   |
-| house_number     | string    | null: false                   |
-| building_name    | string    |                               |
-| phone_number     | integer   | null: false                   |
-| user             | reference | null: false foreign_key: true |
+| Column           | Type       | Options                       |
+| ---------------- | ---------- | ----------------------------- |
+| postal_code_id   | integer    | null: false                   |
+| city_id          | integer    | null: false                   |
+| house_number_id  | integer    | null: false                   |
+| building_name_id | integer    |                               |
+| phone_number_id  | integer    | null: false                   |
+| order            | references | null: false foreign_key: true |
+
+### Association
+
+- belongs_to :order
+
+## orders テーブル
+
+| Column             | Type       | Options                       |
+| ------------------ | ---------- | ----------------------------- |
+| category_id        | integer    | null: false                    |
+| status_id          | integer    | null: false                    |
+| delivery_charge_id | integer    | null: false                    |       
+| shipment_source_id | integer    | null: false                    |
+| shipping_days_id   | integer    | null: false                    |
+| user               | references | null: false foreign_key: true |
+| item               | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
+- belongs_to :item
+- has_one :address
