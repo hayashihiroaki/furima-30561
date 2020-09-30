@@ -4,7 +4,7 @@ RSpec.describe 'トップページ', type: :system do
   before do
     @user = FactoryBot.build(:user)
   end
-  context 'ユーザー新規登録ができるとき' do 
+  context 'ユーザー新規登録ができるとき' do
     it '正しい情報を入力すればユーザー新規登録ができてトップページに移動する' do
       # トップページに移動する
       visit root_path
@@ -27,9 +27,9 @@ RSpec.describe 'トップページ', type: :system do
       fill_in 'birth-date', with: @user.birth_day
 
       # サインアップボタンを押すとユーザーモデルのカウントが1上がることを確認する
-      expect{
+      expect  do
         find('input[name="commit"]').click
-      }.to change { User.count }.by(1)
+      end.to change { User.count }.by(1)
       # トップページへ遷移したことを確認する
       expect(current_path).to eq root_path
       # サインアップページへ遷移するボタンや、ログインページへ遷移するボタンが表示されていないことを確認する
