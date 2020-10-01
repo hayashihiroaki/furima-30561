@@ -4,11 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  ZENKAKU = /\A[ぁ-んァ-ン一-龥]/
-  ZENKAKU_KANA = /\A[ァ-ヶー－]+\z/
+  ZENKAKU = /\A[ぁ-んァ-ン一-龥]/.freeze
+  ZENKAKU_KANA = /\A[ァ-ヶー－]+\z/.freeze
 
   with_options presence: true do
-
     validates :nickname
     validates :family_name, format: { with: ZENKAKU }
     validates :first_name, format: { with: ZENKAKU }
