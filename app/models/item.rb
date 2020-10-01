@@ -15,9 +15,10 @@ class Item < ApplicationRecord
     validates :delivery_charge
     validates :shipment_source
     validates :shipping_days
+    validates :image
   end
 
-  with_options numericality: { other_than: 1 } do
+  with_options numericality: { other_than: 0 } do
     validates :category_id
     validates :delivery_charge_id
     validates :shipment_source_id
