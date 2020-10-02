@@ -9,7 +9,7 @@ class Item < ApplicationRecord
   with_options presence: true do
     validates :name
     validates :explanation
-    validates :price, format: { with: /\A[0-9]+\z/i }, inclusion: { in: 300..9999999 }
+    validates :price, format: { with: /\A[0-9]+\z/i }, inclusion: { in: 300..9_999_999 }
     validates :category
     validates :status
     validates :delivery_charge
@@ -25,7 +25,7 @@ class Item < ApplicationRecord
     validates :shipping_days_id
     validates :status_id
   end
-  
+
   belongs_to :user
   has_one_attached :image
 end

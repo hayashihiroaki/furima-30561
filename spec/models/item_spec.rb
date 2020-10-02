@@ -5,7 +5,6 @@ RSpec.describe Item, type: :model do
     @item = FactoryBot.build(:item)
   end
 
-
   it 'name、explanation、price、category_id、status_id、delivery_charge_id、shipment_source_id、shipping_days_idが存在すれば登録できること' do
     expect(@item).to be_valid
   end
@@ -67,19 +66,18 @@ RSpec.describe Item, type: :model do
   it '価格が、¥299以下だと保存できないこと' do
     @item.price = 200
     @item.valid?
-    expect(@item.errors.full_messages).to include("Price is not included in the list")
+    expect(@item.errors.full_messages).to include('Price is not included in the list')
   end
 
   it '価格が、¥10,000,000以上だと保存できないこと' do
-    @item.price = 10000000
+    @item.price = 10_000_000
     @item.valid?
-    expect(@item.errors.full_messages).to include("Price is not included in the list")
+    expect(@item.errors.full_messages).to include('Price is not included in the list')
   end
 
   it '販売価格は半角数字のみ保存可能であること' do
-    @item.price = "３０００"
+    @item.price = '３０００'
     @item.valid?
-    expect(@item.errors.full_messages).to include("Price is not included in the list")
+    expect(@item.errors.full_messages).to include('Price is not included in the list')
   end
-
 end

@@ -66,7 +66,6 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
     end
-
   end
   describe '本人確認' do
     it 'family_nameが空では登録できないこと' do
