@@ -16,14 +16,14 @@ class Item < ApplicationRecord
     validates :shipment_source
     validates :shipping_days
     validates :image
-  end
 
-  with_options numericality: { other_than: 0 } do
-    validates :category_id
-    validates :delivery_charge_id
-    validates :shipment_source_id
-    validates :shipping_days_id
-    validates :status_id
+    with_options numericality: { other_than: 0 } do
+      validates :category_id
+      validates :delivery_charge_id
+      validates :shipment_source_id
+      validates :shipping_days_id
+      validates :status_id
+    end  
   end
 
   belongs_to :user
