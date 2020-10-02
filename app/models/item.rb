@@ -23,7 +23,7 @@ class Item < ApplicationRecord
       validates :shipment_source_id
       validates :shipping_days_id
       validates :status_id
-    end  
+    end
   end
 
   belongs_to :user
