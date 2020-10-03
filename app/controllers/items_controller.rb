@@ -39,20 +39,21 @@ class ItemsController < ApplicationController
     else
       render :show
     end
-end
+  end
 
-private
+  private
 
-def item_params
-  params.require(:item).permit(:name, :image, :status_id, :explanation, :price, :delivery_charge_id, :shipment_source_id, :shipping_days_id, :category_id).merge(user_id: current_user.id)
-end
+  def item_params
+    params.require(:item).permit(:name, :image, :status_id, :explanation, :price, :delivery_charge_id, :shipment_source_id, :shipping_days_id, :category_id).merge(user_id: current_user.id)
+  end
 
-def move_to_index
-  @item = Item.find(params[:id])
+  def move_to_index
+    @item = Item.find(params[:id])
 
-  redirect_to action: :index unless user_signed_in? && current_user.id == @item.user_id
-end
+    redirect_to action: :index unless user_signed_in? && current_user.id == @item.user_id
+  end
 
-def set_item
-  @item = Item.find(params[:id])
+  def set_item
+    @item = Item.find(params[:id])
+  end
 end
