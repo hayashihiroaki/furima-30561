@@ -17,12 +17,12 @@ RSpec.describe OrderAddress, type: :model do
     it 'postal_codeが半角のハイフンを含んだ正しい形式でないと保存できないこと' do
       @order_address.postal_code = '1234567'
       @order_address.valid?
-      expect(@order_address.errors.full_messages).to include("Postal code is invalid")
+      expect(@order_address.errors.full_messages).to include('Postal code is invalid')
     end
     it 'prefectureを選択していないと保存できないこと' do
       @order_address.prefectures_id = 0
       @order_address.valid?
-      expect(@order_address.errors.full_messages).to include("Prefectures must be other than 0")    
+      expect(@order_address.errors.full_messages).to include('Prefectures must be other than 0')
     end
     it 'cityは空では保存できないこと' do
       @order_address.city = nil
@@ -49,19 +49,19 @@ RSpec.describe OrderAddress, type: :model do
       expect(@order_address.errors.full_messages).to include("Phone number can't be blank")
     end
     it 'phone_numberが10桁だと保存できないこと' do
-      @order_address.phone_number = "1111111111"
+      @order_address.phone_number = '1111111111'
       @order_address.valid?
-      expect(@order_address.errors.full_messages).to include("Phone number is invalid")
+      expect(@order_address.errors.full_messages).to include('Phone number is invalid')
     end
     it 'phone_numberが12桁だと保存できないこと' do
-      @order_address.phone_number = "111111111111"
+      @order_address.phone_number = '111111111111'
       @order_address.valid?
-      expect(@order_address.errors.full_messages).to include("Phone number is invalid")
+      expect(@order_address.errors.full_messages).to include('Phone number is invalid')
     end
     it 'phone_numberに-が含まれていると保存できないこと' do
-      @order_address.phone_number = "111-1111-1111"
+      @order_address.phone_number = '111-1111-1111'
       @order_address.valid?
-      expect(@order_address.errors.full_messages).to include("Phone number is invalid")
+      expect(@order_address.errors.full_messages).to include('Phone number is invalid')
     end
   end
 end
