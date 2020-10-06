@@ -18,6 +18,6 @@ class User < ApplicationRecord
     validates :first_name_kana, format: { with: ZENKAKU_KANA }
     validates :birth_day
   end
-  validates :password, format: { with: /\A[a-z0-9]+\z/i }
+  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i }
   validates :email, uniqueness: true
 end
