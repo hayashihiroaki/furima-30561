@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :items
+  has_many :orders
 
   ZENKAKU = /\A[ぁ-んァ-ン一-龥]/.freeze
   ZENKAKU_KANA = /\A[ァ-ヶー－]+\z/.freeze
