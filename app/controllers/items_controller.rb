@@ -56,7 +56,6 @@ class ItemsController < ApplicationController
   end
 
   def show_move_to_index
-    @item = Item.find(params[:id])
     if @item.order.present?
       redirect_to action: :index
     end
