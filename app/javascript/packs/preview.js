@@ -5,7 +5,6 @@ if (document.URL.match( /new/ ) || document.URL.match( /edit/ )) {
     const createImageHTML = (blob) => {
        // 画像を表示するためのdiv要素を生成
       const imageElement = document.createElement('div');
-
       // 表示する画像を生成
       const blobImage = document.createElement('img');
       blobImage.setAttribute('src', blob);
